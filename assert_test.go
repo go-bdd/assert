@@ -4,7 +4,7 @@ import "testing"
 import "github.com/go-bdd/assert"
 
 func TestEqual(t *testing.T) {
-	if err := assert.Equals(1, 2); err != nil {
+	if err := assert.Equals(1, 2); err == nil {
 		t.Errorf("considered numbers should not be equal: %s", err)
 	}
 
