@@ -5,20 +5,30 @@ import "github.com/go-bdd/assert"
 
 func TestEqual(t *testing.T) {
 	if err := assert.Equals(1, 2); err == nil {
-		t.Errorf("considered numbers should not be equal: %s", err)
+		t.Error( err)
 	}
 
 	if err := assert.Equals(5, 5); err != nil {
-		t.Errorf("considered numbers should be equal: %s", err)
+		t.Error(err)
 	}
 }
 
 func TestNotEqual(t *testing.T) {
 	if err := assert.NotEquals(1, 2); err != nil {
-		t.Errorf("considered numbers should be not equal: %s", err)
+		t.Error(err)
 	}
 
 	if err := assert.NotEquals(5, 5); err == nil {
-		t.Errorf("considered numbers should be equal: %s", err)
+		t.Error(err)
+	}
+}
+
+func TestNotNil(t *testing.T) {
+	if err := assert.Nil(nil); err != nil {
+		t.Error(err)
+	}
+
+	if err := assert.NotNil(123); err != nil {
+		t.Error(err)
 	}
 }

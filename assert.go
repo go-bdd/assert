@@ -7,6 +7,7 @@ import (
 	"reflect"
 )
 
+// Determines if two objects are not equal.
 func NotEquals(expected, actual interface{}) error {
 	if err := validateEqualArgs(expected, actual); err != nil {
 		return err
@@ -19,6 +20,7 @@ func NotEquals(expected, actual interface{}) error {
 	return nil
 }
 
+// Determines if two objects are equal.
 func Equals(expected, actual interface{}) error {
 	if err := validateEqualArgs(expected, actual); err != nil {
 		return err
@@ -31,9 +33,7 @@ func Equals(expected, actual interface{}) error {
 	return fmt.Errorf("expected %+v but %+v given", expected, actual)
 }
 
-// ObjectsAreEqual determines if two objects are considered equal.
-//
-// This function does no assertion of any kind.
+// Determines if two objects are considered equal.
 func ObjectsAreEqual(expected, actual interface{}) bool {
 	if expected == nil || actual == nil {
 		return expected == actual
@@ -52,6 +52,26 @@ func ObjectsAreEqual(expected, actual interface{}) bool {
 		return exp == nil && act == nil
 	}
 	return bytes.Equal(exp, act)
+}
+
+func Nil(object interface{}) error  {
+	if !isNil(object) {
+		return fmt.Errorf("the object should be nil, but got %#v", object)
+	}
+
+	return nil
+}
+
+func NotNil(object interface{}) error  {
+	if isNil(object) {
+		return fmt.Errorf("the object should NOT be nil")
+	}
+
+	return nil
+}
+
+func isNil(object interface{}) bool {
+	return object == nil
 }
 
 func isFunction(arg interface{}) bool {
