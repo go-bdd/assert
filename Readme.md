@@ -1,4 +1,4 @@
-# Assert library [![Build Status](https://travis-ci.com/go-bdd/assert.svg?branch=master)](https://travis-ci.com/go-bdd/assert)
+# Assert library [![Build Status](https://travis-ci.com/go-bdd/assert.svg?branch=master)](https://travis-ci.com/go-bdd/assert) [![Coverage Status](https://coveralls.io/repos/github/go-bdd/assert/badge.svg?branch=master)](https://coveralls.io/github/go-bdd/assert?branch=master)
 
 The aim of this project is to provide very simple and flexible assert library with as less dependencies as possible.
 What's the main difference comparision to other libraries is that it just return an error when the validation fails.

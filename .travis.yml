@@ -32,3 +32,10 @@ notifications:
 # .golangci.yml file at the top level of your repo.
 script:
   - go test -v -race ./...  # Run all the tests with the race detector enabled
+
+after_success:
+  - go get github.com/philwinder/gocoverage
+  - go get github.com/mattn/goveralls
+  - gocoverage
+  - goveralls -coverprofile=profile.cov -repotoken=$COVERALLS_TOKEN
+  - go test -race -coverprofile=coverage.txt -covermode=atomic
