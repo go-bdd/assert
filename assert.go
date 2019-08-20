@@ -14,7 +14,7 @@ func NotEquals(expected, actual interface{}) error {
 	}
 
 	if ObjectsAreEqual(expected, actual) == true {
-		return errors.New("the two objects are equals")
+		return errors.New("the two objects are not equal")
 	}
 
 	return nil
