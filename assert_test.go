@@ -12,3 +12,13 @@ func TestEqual(t *testing.T) {
 		t.Errorf("considered numbers should be equal: %s", err)
 	}
 }
+
+func TestNotEqual(t *testing.T) {
+	if err := assert.NotEquals(1, 2); err != nil {
+		t.Errorf("considered numbers should be not equal: %s", err)
+	}
+
+	if err := assert.NotEquals(5, 5); err == nil {
+		t.Errorf("considered numbers should be equal: %s", err)
+	}
+}

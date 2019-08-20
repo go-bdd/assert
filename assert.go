@@ -7,6 +7,18 @@ import (
 	"reflect"
 )
 
+func NotEquals(expected, actual interface{}) error {
+	if err := validateEqualArgs(expected, actual); err != nil {
+		return err
+	}
+
+	if ObjectsAreEqual(expected, actual) == true {
+		return errors.New("the two objects are equals")
+	}
+
+	return nil
+}
+
 func Equals(expected, actual interface{}) error {
 	if err := validateEqualArgs(expected, actual); err != nil {
 		return err
